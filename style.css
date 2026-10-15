@@ -1,30 +1,38 @@
 /* ========================================
    SIMPLY HER ♡
    Shared stylesheet
-   Theme: Soft sky blue and white
+   Theme: Fresh sky blue and white
 ======================================== */
+
 
 /* ---------- 1. Design Variables ---------- */
 
 :root {
-    --blue: #8bbce8;
-    --blue-dark: #477da9;
-    --blue-light: #eaf5ff;
-    --blue-pale: #f5faff;
+    /* Main colors */
+    --blue: #65A9E8;
+    --blue-dark: #347DBB;
+    --blue-deep: #24577F;
+    --blue-light: #DCEEFF;
+    --blue-pale: #F1F8FF;
+    --blue-soft: #E8F3FF;
+    --blue-border: #C5DFF7;
 
-    --white: #ffffff;
-    --text: #33465a;
-    --text-light: #708195;
-    --border: #dceaf6;
+    /* Neutral colors */
+    --white: #FFFFFF;
+    --text: #2E4358;
+    --text-light: #61768B;
+    --border: #D4E5F5;
 
-    --shadow: 0 8px 28px rgba(73, 119, 160, 0.09);
-    --shadow-hover: 0 12px 32px rgba(73, 119, 160, 0.15);
+    /* Effects */
+    --shadow: 0 8px 26px rgba(54, 111, 164, 0.09);
+    --shadow-hover: 0 13px 32px rgba(54, 111, 164, 0.15);
 
+    /* Shape and layout */
     --radius: 18px;
     --radius-small: 12px;
-
     --container: 1120px;
 }
+
 
 /* ---------- 2. Reset and Base ---------- */
 
@@ -92,9 +100,10 @@ ul {
 }
 
 ::selection {
-    color: var(--text);
-    background: #d9ecff;
+    color: var(--blue-deep);
+    background: #D4E9FF;
 }
+
 
 /* ---------- 3. Shared Layout ---------- */
 
@@ -113,6 +122,7 @@ ul {
 
 .section-heading {
     margin-bottom: 12px;
+
     color: var(--text);
     font-size: clamp(1.8rem, 3.5vw, 2.5rem);
     font-weight: 700;
@@ -123,6 +133,7 @@ ul {
 .section-intro {
     max-width: 650px;
     margin-bottom: 34px;
+
     color: var(--text-light);
 }
 
@@ -137,6 +148,7 @@ ul {
     text-transform: uppercase;
 }
 
+
 /* ---------- 4. Navigation ---------- */
 
 .site-header {
@@ -145,7 +157,8 @@ ul {
     z-index: 1000;
 
     width: 100%;
-    background: rgba(255, 255, 255, 0.96);
+
+    background: rgba(255, 255, 255, 0.97);
     border-bottom: 1px solid var(--border);
 
     backdrop-filter: blur(12px);
@@ -182,6 +195,7 @@ ul {
     position: absolute;
     width: 1px;
     height: 1px;
+
     overflow: hidden;
     clip-path: inset(50%);
     white-space: nowrap;
@@ -189,6 +203,7 @@ ul {
 
 .menu-button {
     display: none;
+
     width: 44px;
     height: 44px;
 
@@ -197,22 +212,34 @@ ul {
     flex-direction: column;
     gap: 5px;
 
-    border: 1px solid var(--border);
+    border: 1px solid var(--blue-border);
     border-radius: 12px;
-    background: var(--blue-pale);
 
+    background: var(--blue-pale);
     cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.menu-button:hover {
+    background: var(--blue-light);
+    border-color: var(--blue);
 }
 
 .menu-button span {
     display: block;
+
     width: 20px;
     height: 2px;
 
     background: var(--blue-dark);
     border-radius: 3px;
 
-    transition: transform 0.25s ease, opacity 0.25s ease;
+    transition:
+        transform 0.25s ease,
+        opacity 0.25s ease;
 }
 
 .nav-links {
@@ -254,6 +281,7 @@ ul {
 
     transform: scaleX(0);
     transform-origin: left;
+
     transition: transform 0.2s ease;
 }
 
@@ -262,6 +290,7 @@ ul {
 .nav-links a.active::after {
     transform: scaleX(1);
 }
+
 
 /* ---------- 5. Buttons ---------- */
 
@@ -286,28 +315,43 @@ ul {
 
     cursor: pointer;
 
+    box-shadow: 0 4px 12px rgba(52, 125, 187, 0.13);
+
     transition:
         background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
         transform 0.2s ease,
         box-shadow 0.2s ease;
 }
 
 .button:hover {
-    background: #386b95;
-    box-shadow: var(--shadow);
+    color: var(--white);
+    background: #286CA7;
+    border-color: #286CA7;
+
+    box-shadow: 0 7px 17px rgba(52, 125, 187, 0.2);
     transform: translateY(-2px);
+}
+
+.button:active {
+    transform: translateY(0);
 }
 
 .button-outline {
     color: var(--blue-dark);
     background: var(--white);
-    border-color: var(--border);
+    border-color: var(--blue);
+
+    box-shadow: none;
 }
 
 .button-outline:hover {
-    color: var(--blue-dark);
+    color: var(--blue-deep);
     background: var(--blue-light);
-    border-color: var(--blue);
+    border-color: var(--blue-dark);
+
+    box-shadow: none;
 }
 
 .text-link {
@@ -317,24 +361,34 @@ ul {
 
     color: var(--blue-dark);
     font-weight: 700;
+
+    transition: color 0.2s ease;
 }
 
 .text-link:hover {
+    color: var(--blue-deep);
     text-decoration: underline;
     text-underline-offset: 5px;
 }
+
 
 /* ---------- 6. Home Hero ---------- */
 
 .hero {
     padding-block: 64px 76px;
+
     background:
         radial-gradient(
             circle at 85% 20%,
-            rgba(219, 239, 255, 0.75),
-            transparent 34%
+            rgba(190, 222, 255, 0.72),
+            transparent 35%
         ),
-        var(--blue-pale);
+        linear-gradient(
+            135deg,
+            #F1F8FF 0%,
+            #E7F3FF 55%,
+            #F6FAFF 100%
+        );
 }
 
 .hero-grid {
@@ -372,6 +426,7 @@ ul {
 
 .hero-tagline {
     margin-top: 18px;
+
     color: var(--text-light);
     font-size: 0.9rem;
     font-style: italic;
@@ -379,21 +434,26 @@ ul {
 
 .hero-image-wrap {
     position: relative;
+
     width: 100%;
     max-width: 430px;
     margin-inline: auto;
 }
 
 .hero-image {
+    position: relative;
+    z-index: 1;
+
     width: 100%;
     height: 510px;
+
     object-fit: cover;
     object-position: center top;
 
     border: 7px solid var(--white);
     border-radius: 180px 180px 24px 24px;
 
-    box-shadow: var(--shadow);
+    box-shadow: 0 12px 32px rgba(52, 111, 164, 0.15);
 }
 
 .hero-image-wrap::before {
@@ -406,14 +466,10 @@ ul {
     height: 100%;
     content: "";
 
-    border: 1px solid var(--blue);
+    border: 2px solid var(--blue);
     border-radius: 180px 180px 24px 24px;
 }
 
-.hero-image {
-    position: relative;
-    z-index: 1;
-}
 
 /* ---------- 7. Introduction Section ---------- */
 
@@ -427,10 +483,13 @@ ul {
 .intro-image {
     width: 100%;
     height: 410px;
+
     object-fit: cover;
     object-position: center;
 
+    border: 1px solid var(--border);
     border-radius: var(--radius);
+
     box-shadow: var(--shadow);
 }
 
@@ -438,6 +497,7 @@ ul {
     margin-bottom: 22px;
     color: var(--text-light);
 }
+
 
 /* ---------- 8. Goal Cards ---------- */
 
@@ -451,16 +511,21 @@ ul {
     padding: 26px;
 
     background: var(--white);
-    border: 1px solid var(--border);
+    border: 1px solid var(--blue-border);
     border-radius: var(--radius);
 
     box-shadow: var(--shadow);
 
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
 }
 
 .goal-card:hover {
     transform: translateY(-4px);
+
+    border-color: #9CC9F1;
     box-shadow: var(--shadow-hover);
 }
 
@@ -469,8 +534,10 @@ ul {
     margin-bottom: 12px;
     padding: 4px 10px;
 
-    color: var(--blue-dark);
+    color: var(--blue-deep);
     background: var(--blue-light);
+
+    border: 1px solid #C6E1FA;
     border-radius: 999px;
 
     font-size: 0.72rem;
@@ -479,6 +546,7 @@ ul {
 
 .goal-date {
     margin-bottom: 8px;
+
     color: var(--blue-dark);
     font-size: 0.85rem;
     font-weight: 700;
@@ -486,6 +554,7 @@ ul {
 
 .goal-card h3 {
     margin-bottom: 10px;
+    color: var(--text);
     font-size: 1.15rem;
 }
 
@@ -493,6 +562,7 @@ ul {
     color: var(--text-light);
     font-size: 0.94rem;
 }
+
 
 /* ---------- 9. Explore Cards ---------- */
 
@@ -506,21 +576,27 @@ ul {
     padding: 32px;
 
     background: var(--white);
-    border: 1px solid var(--border);
+    border: 1px solid var(--blue-border);
     border-radius: var(--radius);
 
     box-shadow: var(--shadow);
 
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
 }
 
 .explore-card:hover {
     transform: translateY(-4px);
+
+    border-color: #9CC9F1;
     box-shadow: var(--shadow-hover);
 }
 
 .explore-card h3 {
     margin-bottom: 10px;
+    color: var(--text);
     font-size: 1.3rem;
 }
 
@@ -529,12 +605,23 @@ ul {
     color: var(--text-light);
 }
 
+
 /* ---------- 10. Page Headers ---------- */
 
 .page-banner {
     padding-block: 64px;
+
     text-align: center;
-    background: var(--blue-pale);
+
+    background:
+        linear-gradient(
+            135deg,
+            #E4F2FF 0%,
+            #D8EBFF 55%,
+            #EDF6FF 100%
+        );
+
+    border-bottom: 1px solid var(--blue-border);
 }
 
 .page-title {
@@ -549,8 +636,10 @@ ul {
 .page-description {
     max-width: 650px;
     margin-inline: auto;
+
     color: var(--text-light);
 }
+
 
 /* ---------- 11. Gallery ---------- */
 
@@ -580,31 +669,40 @@ ul {
     overflow: hidden;
 
     background: var(--white);
-    border: 1px solid var(--border);
+    border: 1px solid var(--blue-border);
     border-radius: var(--radius);
 
     box-shadow: var(--shadow);
 
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
 }
 
 .gallery-item:hover {
     transform: translateY(-4px);
+
+    border-color: #9CC9F1;
     box-shadow: var(--shadow-hover);
 }
 
 .gallery-image {
     width: 100%;
     height: 290px;
+
     object-fit: cover;
     object-position: center;
+
     background: var(--blue-light);
 }
 
 .gallery-item.artwork .gallery-image {
     height: 310px;
+
     object-fit: contain;
     padding: 12px;
+
     background: var(--blue-pale);
 }
 
@@ -614,6 +712,7 @@ ul {
 
 .gallery-caption h3 {
     margin-bottom: 6px;
+    color: var(--text);
     font-size: 1.05rem;
 }
 
@@ -622,11 +721,13 @@ ul {
     font-size: 0.9rem;
 }
 
+
 /* ---------- 12. Information Page ---------- */
 
 .about-intro {
     max-width: 780px;
     margin-inline: auto;
+
     text-align: center;
 }
 
@@ -637,7 +738,7 @@ ul {
 .info-table-wrap {
     overflow-x: auto;
 
-    border: 1px solid var(--border);
+    border: 1px solid var(--blue-border);
     border-radius: var(--radius);
 
     box-shadow: var(--shadow);
@@ -645,6 +746,7 @@ ul {
 
 .info-table {
     width: 100%;
+
     border-collapse: collapse;
     background: var(--white);
 }
@@ -652,15 +754,19 @@ ul {
 .info-table th,
 .info-table td {
     padding: 17px 22px;
+
     border-bottom: 1px solid var(--border);
+
     text-align: left;
     vertical-align: top;
 }
 
 .info-table th {
     width: 34%;
-    color: var(--blue-dark);
-    background: var(--blue-pale);
+
+    color: var(--blue-deep);
+    background: #EAF4FF;
+
     font-weight: 700;
 }
 
@@ -684,10 +790,19 @@ ul {
     padding: 13px 19px;
 
     background: var(--blue-pale);
-    border: 1px solid var(--border);
+    border: 1px solid var(--blue-border);
     border-radius: 999px;
 
     font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.interest-item:hover {
+    background: var(--blue-light);
+    border-color: #A9D0F5;
 }
 
 .interest-icon {
@@ -698,8 +813,13 @@ ul {
 .story-panel {
     padding: 34px;
 
-    background: var(--blue-pale);
-    border: 1px solid var(--border);
+    background: linear-gradient(
+        135deg,
+        #EDF6FF,
+        #F7FBFF
+    );
+
+    border: 1px solid var(--blue-border);
     border-radius: var(--radius);
 }
 
@@ -719,15 +839,17 @@ ul {
     margin-top: 28px;
     padding: 24px 28px;
 
-    color: var(--blue-dark);
-    background: var(--blue-light);
-    border-left: 4px solid var(--blue);
+    color: var(--blue-deep);
+    background: #DCEEFF;
+
+    border-left: 4px solid var(--blue-dark);
     border-radius: 0 var(--radius-small) var(--radius-small) 0;
 
     font-size: 1.2rem;
     font-weight: 700;
     font-style: italic;
 }
+
 
 /* ---------- 13. Contact Form ---------- */
 
@@ -740,7 +862,7 @@ ul {
     padding: 34px;
 
     background: var(--white);
-    border: 1px solid var(--border);
+    border: 1px solid var(--blue-border);
     border-radius: var(--radius);
 
     box-shadow: var(--shadow);
@@ -756,6 +878,7 @@ ul {
     display: flex;
     flex-direction: column;
     gap: 8px;
+
     min-width: 0;
 }
 
@@ -780,12 +903,20 @@ ul {
     color: var(--text);
     background: var(--white);
 
-    border: 1px solid #d5e2ef;
+    border: 1px solid #BDD5EB;
     border-radius: var(--radius-small);
 
     outline: none;
 
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #7B8EA2;
+    opacity: 1;
 }
 
 .form-group textarea {
@@ -797,7 +928,7 @@ ul {
 .form-group select:focus,
 .form-group textarea:focus {
     border-color: var(--blue-dark);
-    box-shadow: 0 0 0 3px rgba(139, 188, 232, 0.2);
+    box-shadow: 0 0 0 3px rgba(101, 169, 232, 0.2);
 }
 
 .radio-options {
@@ -822,6 +953,7 @@ ul {
 
 .form-note {
     margin-top: 18px;
+
     color: var(--text-light);
     font-size: 0.85rem;
 }
@@ -830,16 +962,17 @@ ul {
     margin-top: 24px;
 }
 
+
 /* ---------- 14. Shared Footer ---------- */
 
 .site-footer {
     margin-top: auto;
     padding-top: 42px;
 
-    background: #dcecf9;
-    border-top: 1px solid #c6dced;
+    background: #E0EFFD;
+    border-top: 1px solid #BFD9F0;
 
-    color: #344b63;
+    color: #344B63;
 }
 
 .footer-main {
@@ -860,16 +993,17 @@ ul {
 .footer-brand .brand {
     display: inline-block;
 
-    color: #294b70;
+    color: #285C8C;
     font-size: 1.35rem;
     font-weight: 700;
+
     text-decoration: none;
 }
 
 .footer-brand p {
     margin-top: 9px;
 
-    color: #526b82;
+    color: #4D6680;
     font-size: 0.92rem;
     line-height: 1.7;
 }
@@ -878,7 +1012,7 @@ ul {
 .footer-social h3 {
     margin: 0 0 14px;
 
-    color: #294b70;
+    color: #285477;
     font-size: 1rem;
     font-weight: 700;
 }
@@ -894,7 +1028,7 @@ ul {
 }
 
 .footer-link-list a {
-    color: #405a73;
+    color: #405A73;
     font-size: 0.92rem;
     text-decoration: none;
 
@@ -903,7 +1037,7 @@ ul {
 
 .footer-link-list a:hover,
 .footer-link-list a:focus-visible {
-    color: #1e79b9;
+    color: #1769A6;
 }
 
 /* Social media logos */
@@ -922,16 +1056,17 @@ ul {
     width: 42px;
     height: 42px;
 
-    border: 1px solid #c2d8eb;
+    border: 1px solid #B7D3EC;
     border-radius: 50%;
 
-    background: #f8fbff;
-    color: #345b80;
+    background: #FFFFFF;
+    color: #315F89;
 
     text-decoration: none;
 
     transition:
         background 0.2s ease,
+        border-color 0.2s ease,
         color 0.2s ease,
         transform 0.2s ease;
 }
@@ -944,8 +1079,10 @@ ul {
 
 .social-link:hover,
 .social-link:focus-visible {
-    background: #c3def4;
-    color: #203f60;
+    background: #C8E3FC;
+    border-color: #8ABCE9;
+    color: #214D76;
+
     transform: translateY(-2px);
 }
 
@@ -960,9 +1097,9 @@ ul {
 
     padding: 17px 24px;
 
-    border-top: 1px solid #c6dced;
+    border-top: 1px solid #BFD9F0;
 
-    color: #60768a;
+    color: #526B82;
     font-size: 0.82rem;
 }
 
@@ -970,12 +1107,13 @@ ul {
     margin: 0;
 }
 
+
 /* ---------- 15. Accessibility ---------- */
 
 a:focus-visible,
 button:focus-visible,
 label:focus-within {
-    outline: 3px solid rgba(71, 125, 169, 0.45);
+    outline: 3px solid rgba(52, 125, 187, 0.55);
     outline-offset: 4px;
 }
 
@@ -989,12 +1127,14 @@ label:focus-within {
 
     color: var(--white);
     background: var(--blue-dark);
+
     border-radius: var(--radius-small);
 }
 
 .skip-link:focus {
     top: 12px;
 }
+
 
 /* ---------- 16. Tablet Layout ---------- */
 
@@ -1044,6 +1184,7 @@ label:focus-within {
     }
 }
 
+
 /* ---------- 17. Mobile Navigation ---------- */
 
 @media (max-width: 700px) {
@@ -1080,7 +1221,7 @@ label:focus-within {
         padding: 8px 18px;
 
         background: var(--white);
-        border: 1px solid var(--border);
+        border: 1px solid var(--blue-border);
         border-radius: 0 0 var(--radius) var(--radius);
 
         box-shadow: var(--shadow);
@@ -1100,6 +1241,7 @@ label:focus-within {
     .nav-links a {
         display: block;
         padding: 13px 4px;
+
         border-bottom: 1px solid var(--border);
     }
 
@@ -1115,6 +1257,7 @@ label:focus-within {
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
+
         transform: translateY(0);
     }
 
@@ -1131,7 +1274,7 @@ label:focus-within {
     }
 
     .nav-toggle:focus-visible + .menu-button {
-        outline: 3px solid rgba(71, 125, 169, 0.45);
+        outline: 3px solid rgba(52, 125, 187, 0.55);
         outline-offset: 4px;
     }
 
@@ -1297,6 +1440,7 @@ label:focus-within {
     }
 }
 
+
 /* ---------- 18. Small Phones ---------- */
 
 @media (max-width: 390px) {
@@ -1349,6 +1493,7 @@ label:focus-within {
         padding: 20px 15px;
     }
 }
+
 
 /* ---------- 19. Reduced Motion ---------- */
 
